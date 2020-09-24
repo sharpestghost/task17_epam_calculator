@@ -1,4 +1,4 @@
-# Stateful Expression Calculator
+# Servlets Stateful Expression Calculator
 
 Create a webapp serving expression value calculating.
 
@@ -21,7 +21,7 @@ All variable values should be in `[-10000; 10000]` range. Exceeding values shoul
 User may unset equation or variable by executing `DELETE` request to corresponding resource URL.
 Such requests should return `204` status codes.
 
-User may get valur of evaluated expression by execution `GET` request to `/calc/result` URI.\
+User may get value of evaluated expression by execution `GET` request to `/calc/result` URI.\
 In case, when expression is set, and it may be evaluated, webapp should return `200` status code and calculated integer value as a response body.\
 In case, when expression may not be calculated due to lack of data, webapp should return `409` status code and reason of this error.  
 
