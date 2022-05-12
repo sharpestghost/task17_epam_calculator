@@ -82,13 +82,13 @@ public class CalculatorServlet extends HttpServlet {
         try {
             response.getWriter().print(session.getAttribute(RESULT_TEXT));
         } catch (IOException e) {
-            LOGGER.log(Level.WARNING, e.getMessage());
+            LOGGER.log(Level.WARNING, e.getMessage(), e.getCause());
         }
     }
 
     private void checkingExpression(HttpServletRequest request, HttpServletResponse response, String keyInfo) {
         String valueData = readALineOfText(request);
-        if (valueData.chars().mapToObj(i->(char)i).noneMatch(i -> OPERATIONS_LIST.contains(String.valueOf(i)))) {
+        if (valueData.chars().mapToObj(i -> (char) i).noneMatch(i -> OPERATIONS_LIST.contains(String.valueOf(i)))) {
             response.setStatus(SC_BAD_REQUEST);
             return;
         }
@@ -141,8 +141,8 @@ public class CalculatorServlet extends HttpServlet {
         String valueData = EMPTY_STRING;
         try {
             valueData = request.getReader().readLine();
-        } catch (IOException exception) {
-            LOGGER.log(Level.WARNING, exception.getMessage());
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, e.getMessage(), e.getCause());
         }
         return valueData;
     }

@@ -6,6 +6,7 @@ import java.util.Deque;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EquationCreator {
@@ -57,8 +58,8 @@ public class EquationCreator {
                     default:
                         elementsList.add(token);
                 }
-            } catch (NoSuchElementException exception) {
-                LOGGER.info(exception.getMessage());
+            } catch (NoSuchElementException e) {
+                LOGGER.log(Level.WARNING, e.getMessage(), e.getCause());
                 if (!token.equals(CLOSING_PARENTHESIS)) {
                     stackSymbols.addFirst(token);
                 }
