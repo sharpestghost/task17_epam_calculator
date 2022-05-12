@@ -1,7 +1,6 @@
 package main;
-import javax.servlet.FilterChain;
+
 import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,11 +12,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 @WebServlet(urlPatterns = {"/calc/*"})
-public class CalculatorServlet extends HttpServlet implements CalcInterface {
+public class CalculatorServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
+    private static final Logger LOGGER = Logger.getGlobal();
+
+    private static final String EXPRESSION_TEXT = "expression";
+    private static final String RESULT_TEXT = "result";
+    private static final String OPERATIONS_LIST = "+-/*";
+    private static final String EMPTY_STRING = "";
+    private static final int MIN_VALUES_RANGE = -10000;
+    private static final int MAX_VALUES_RANGE = 10000;
+    private static final int SC_CREATED = 201;
+    private static final int SC_NO_CONTENT = 204;
+    private static final int SC_BAD_REQUEST = 400;
+    private static final int SC_FORBIDDEN = 403;
+    private static final int SC_CONFLICT = 409;
 
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) {
@@ -98,10 +112,6 @@ public class CalculatorServlet extends HttpServlet implements CalcInterface {
             session.setAttribute(keyInfo, valueData);
             response.setStatus(SC_BAD_REQUEST);
         }
-    }
-
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
-
     }
 
     private Map<String, Integer> attributeParse(HttpSession session, Enumeration<String> allNamesAttributes,

@@ -1,8 +1,21 @@
 package main;
 
 import java.util.*;
+import java.util.logging.Logger;
 
-public class EquationCreator implements CalcInterface {
+public class EquationCreator {
+    private static final Logger LOGGER = Logger.getGlobal();
+    private static final String CLOSING_PARENTHESIS = ")";
+    private static final String OPENING_PARENTHESIS = "(";
+    private static final String OPERATIONS_AND_PARENTHESIS = "()+-/*";
+    private static final String OPERATIONS_LIST = "+-/*";
+    private static final String MULTIPLY_AND_DIVIDE = "/*";
+    private static final String PLUS = "+";
+    private static final String SUBTRACT = "-";
+    private static final String MULTIPLY = "*";
+    private static final String DIVIDE = "/";
+    private static final String WHITESPACE_SYMBOL = " ";
+    private static final String EMPTY_STRING = "";
 
     public synchronized List<String> sortEquationElements(String equation) {
         List<String> tokensList = new ArrayList<>();

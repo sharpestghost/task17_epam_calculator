@@ -5,7 +5,11 @@ import java.util.Deque;
 import java.util.List;
 import java.util.Map;
 
-public class Calculator implements CalcInterface {
+public class Calculator  {
+    private static final String PLUS = "+";
+    private static final String SUBTRACT = "-";
+    private static final String MULTIPLY = "*";
+    private static final String DIVIDE = "/";
 
     public synchronized int calculate(List<String> elementsList, Map<String, Integer> args) {
         Deque<Integer> stackOfNumbers = new ArrayDeque<>();
