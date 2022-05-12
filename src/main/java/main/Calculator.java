@@ -2,7 +2,6 @@ package main;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.List;
 import java.util.Map;
 
 public class Calculator  {
@@ -11,7 +10,7 @@ public class Calculator  {
     private static final String MULTIPLY = "*";
     private static final String DIVIDE = "/";
 
-    public synchronized int calculate(List<String> elementsList, Map<String, Integer> args) {
+    public synchronized int calculate(Iterable<String> elementsList, Map<String, Integer> args) {
         Deque<Integer> stackOfNumbers = new ArrayDeque<>();
         for (String token : elementsList) {
             switch (token) {

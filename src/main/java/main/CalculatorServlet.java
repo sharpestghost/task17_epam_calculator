@@ -74,15 +74,15 @@ public class CalculatorServlet extends HttpServlet {
 
             int result = calculator.calculate(tokens, argumentsMap);
             session.setAttribute(RESULT_TEXT, result);
-        } catch (NumberFormatException exception) {
-            exception.printStackTrace();
+        } catch (NumberFormatException e) {
+            LOGGER.log(Level.WARNING, e.getMessage());
             response.setStatus(SC_CONFLICT);
-        }
 
+        }
         try {
             response.getWriter().print(session.getAttribute(RESULT_TEXT));
-        } catch (IOException exception) {
-            LOGGER.log(Level.WARNING, exception.getMessage());
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, e.getMessage());
         }
     }
 
@@ -107,8 +107,8 @@ public class CalculatorServlet extends HttpServlet {
                 return;
             }
             session.setAttribute(keyInfo, valueData);
-        } catch (NumberFormatException exception) {
-            exception.printStackTrace();
+        } catch (NumberFormatException e) {
+            LOGGER.log(Level.WARNING, e.getMessage());
             session.setAttribute(keyInfo, valueData);
             response.setStatus(SC_BAD_REQUEST);
         }
@@ -146,8 +146,4 @@ public class CalculatorServlet extends HttpServlet {
         }
         return valueData;
     }
-
-
-
-
 }

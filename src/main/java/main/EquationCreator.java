@@ -1,6 +1,11 @@
 package main;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 public class EquationCreator {
